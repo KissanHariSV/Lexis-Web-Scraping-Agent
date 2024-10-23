@@ -1,3 +1,17 @@
+import pytest
+from src.rufus_agent import RufusAgent
+
+def test_crawl():
+    agent = RufusAgent(instructions="Test prompt")
+    content = agent.crawl("https://example.com")  # Replace with a real URL
+    assert len(content) > 0  # Ensure some content is returned
+
+def test_document_formatting():
+    agent = RufusAgent(instructions="Test prompt")
+    fake_content = ["<h1>Test Page</h1><p>FAQ: How to use it?</p>"]
+    documents = agent.format_as_documents("https://example.com", fake_content)
+    assert len(documents) == 1 
+    
 def crawl(self, url, current_depth=0):
     try:
         response = self.session.get(url)
