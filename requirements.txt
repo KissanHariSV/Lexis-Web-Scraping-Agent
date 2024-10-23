@@ -1,1 +1,5 @@
-
+beautifulsoup4==4.9.3
+requests-html==0.10.0
+transformers==4.10.0
+pydantic==1.8.2
+pytest==6.2.4
