@@ -9,7 +9,7 @@ class RufusAgent:
         self.session = HTMLSession()
         self.visited_urls = set()
         self.depth = depth
-        self.summarizer = pipeline('summarization')  # Use a transformer model for summarization
+        self.summarizer = pipeline('summarization')
 
     def crawl(self, url, current_depth=0):
         if current_depth > self.depth or url in self.visited_urls:
@@ -33,8 +33,7 @@ class RufusAgent:
         return content
 
     def _is_valid_link(self, url):
-        return url.startswith("https://")  # You can adjust this for domain-specific crawling
-
+        return url.startswith("https://")
     def crawl_and_extract(self, url):
         html_content = self.crawl(url)
         summarized_content = self.summarize_content(html_content)
@@ -43,7 +42,7 @@ class RufusAgent:
     def summarize_content(self, content):
         summaries = []
         for page in content:
-            summary = self.summarizer(page[:1000])  # Summarize the first 1000 tokens of the page
+            summary = self.summarizer(page[:1000])
             summaries.append(summary[0]['summary_text'])
         return summaries
 
