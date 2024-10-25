@@ -3,14 +3,22 @@ from .rufus_agent import RufusAgent
 class RufusClient:
     def __init__(self):
         self.agent = RufusAgent()
+        self.links = []
+
+    def scrape_and_fetch_links(self, url):
+      
+        _, self.links = self.agent.fetch_and_list_links(url)
+        self.print_links()
+
+    def print_links(self):
+        for i, link in enumerate(self.links, start=1):
+            print(f"{i}. {link}")
 
     def scrape_and_summarize(self, url, prompt, file_format='json', filename='summarized_content'):
         try:
-          
-            response, links = self.agent.fetch_and_list_links(url)
-
+           
             selected_link_index = int(prompt) - 1
-            selected_link = links[selected_link_index]
+            selected_link = self.links[selected_link_index]
             print(f"Selected Link: {selected_link}")
 
             response = self.agent.fetch_url(selected_link)
