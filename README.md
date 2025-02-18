@@ -1,4 +1,4 @@
-# Lexis-Web-Scraping-Agent
+# Rufus-Web-Scraping-Agent
 
 Rufus is an AI-powered tool designed to intelligently crawl web pages, extract relevant content, and summarize it into structured formats like JSON and CSV. It dynamically handles complex web structures, including JavaScript-rendered content, and provides clean, concise summaries ready for use in machine learning applications, such as Retrieval-Augmented Generation (RAG) pipelines.
 
